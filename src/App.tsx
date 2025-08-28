@@ -1,4 +1,5 @@
 import './App.css'
+import './Chat.css'
 import Login from './Login.tsx'
 import Chat from './Chat.tsx'
 import { useAuth } from './firebase/auth.ts'

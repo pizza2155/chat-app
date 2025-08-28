@@ -5,7 +5,7 @@ import { useAuth } from "./firebase/auth"
 
 
 const Chat = () => {
-  const [messages, setMessages] = useState<{ id: string; text: string; senderId: string, timestamp: Timestamp }[]>([]);
+  const [messages, setMessages] = useState<{ id: string; text: string; senderId: string, timestamp: Timestamp, displayName: string }[]>([]);
 
   useEffect(() => {
 
@@ -16,7 +16,8 @@ const Chat = () => {
         id: doc.id,
         text: doc.data().text,
         senderId: doc.data().senderId,
-        timestamp: doc.data().timestamp
+        timestamp: doc.data().timestamp,
+        displayName: doc.data().displayName,
       }))
       const sortedMessages = messageData.sort((a,b) => a.timestamp - b.timestamp)
       setMessages(sortedMessages)
@@ -34,27 +35,38 @@ const Chat = () => {
     await addDoc(collection(db, "chats"), {
       text: message,
       senderId: user.uid,
+      displayName: user.displayName,
       timestamp: serverTimestamp(),
     })
 
     setMessage("")
   }
 
+  const formatDate = (dateInfo: Timestamp) => {
+    if (!dateInfo) return;
+    const timestamp = dateInfo.toDate();
+    return `${timestamp.getMonth()+1}/${timestamp.getDay()} ${timestamp.getUTCHours()+8}:${timestamp.getMinutes()}`;
+  }
+
   return (
-    <div>
+    <div className="chat-containner">
       <h2>チャット</h2>
-      <ul>
+      <div className="messages">
         {messages.map((msg) => (
-          <li key={msg.id}>
-            <strong>{msg.senderId} : </strong>{msg.text} 時間：{msg.timestamp?.toDate()?.toDateString()}
-          </li>
+          <div key={msg.id} className={`message ${msg.senderId === user?.uid ? "sent" : "received"}`}>
+            <p className="sender-name">{msg.displayName || "匿名"}</p>
+            <p className="text"> {msg.text}</p>
+            {formatDate(msg.timestamp)}
+          </div>
         ))}
-      </ul>
+      </div>
+      <div className="input-area">
       <input type="text" 
       value={message}
       onChange={(e) => setMessage(e.target.value)}
       placeholder="メッセージを入力"/>
       <button onClick={sendMessage}>送信</button>
+      </div>
     </div>
   )
 }
