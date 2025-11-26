@@ -1,50 +1,46 @@
-# React + TypeScript + Vite
+# Chat App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 概要
+このアプリは、Firebaseを利用したチャットルームと、サイゼリヤメニューのガチャ機能を持つWebアプリです。
 
-Currently, two official plugins are available:
+## 起動方法
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. 依存パッケージのインストール  
+   ```sh
+   npm install
+   ```
+2. 開発サーバーの起動  
+   ```sh
+   npm run dev
+   ```
+   ブラウザで `http://localhost:5173` などにアクセスしてください。
 
-## Expanding the ESLint configuration
+## ページ一覧
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- `/page`  
+  サイゼリヤメニューガチャ  
+  - ジャンルや予算を指定してランダムにメニューを選べます。
 
-- Configure the top-level `parserOptions` property like this:
+- `/chat`  
+  チャットルーム  
+  - Googleアカウントでログインして利用できます。
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- `/login`  
+  ログイン/ログアウトページ  
+  - Google認証によるログイン・ログアウトが可能です。
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 技術スタック
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- React 18
+- TypeScript
+- Vite
+- Firebase (Authentication, Firestore)
+- Tailwind CSS
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## 出典
+
+- サイゼリヤメニュー: [https://github.com/ryohidaka/saizeriya-menus](https://github.com/ryohidaka/saizeriya-menus)
+
+## ライセンス
+
+MIT
