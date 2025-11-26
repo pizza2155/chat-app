@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import menu from './saizeriya.json'
-import PageTitle from './PageTitle.tsx';
-import TypeSelectCheckbox from './TypeSelectCheckbox.tsx';
+import menu from '../saizeriya/saizeriya.json'
+import PageTitle from '../saizeriya/PageTitle.tsx';
+import TypeSelectCheckbox from '../saizeriya/TypeSelectCheckbox.tsx';
 import Limit from './Limit.tsx';
 
 const page = () => {

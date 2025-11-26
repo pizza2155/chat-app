@@ -2,7 +2,7 @@ import './App.css'
 import './Chat.css'
 import Login from './Login.tsx'
 import Chat from './Chat.tsx'
-import Page from './pages/sample/index.tsx'
+import Page from './pages/saizeriya/index.tsx'
 import { useAuth } from './firebase/auth.ts'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
