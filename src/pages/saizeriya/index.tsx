@@ -13,7 +13,7 @@ const page = () => {
   const [language, setLanguage] = useState('japanese');
 
   const genreList = Array.from(new Set(menu.menus.map(menu => menu.genre)));
-  genreList.unshift('all');
+  // genreList.unshift('all');
 
   const [genre, setGenre] = useState<string[]>([]);
 
