@@ -29,6 +29,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist  # ビルドされた静的ファイルのディレクトリ
+          publish_branch: gh-pages  # 明示的に gh-pages に公開するよう指定
           
       - name: Cache Node modules
         uses: actions/cache@v3
