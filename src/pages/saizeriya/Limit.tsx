@@ -2,10 +2,9 @@ import React from 'react';
 
 
 type LimitProps = {
-  price?: number | null;
   onGacha: (param: number) => void;
 }
-const Limit: React.FC<LimitProps> = ({ price: price, onGacha: onGacha }) => {
+const Limit: React.FC<LimitProps> = ({ onGacha: onGacha }) => {
 
   const [tempPrice, setTempPrice] = React.useState<number>(0);
 

@@ -56,7 +56,7 @@ const page = () => {
     }
   }
 
-  const [price, setPrice] = useState<number | null>(null);
+  const [, setPrice] = useState<number | null>(null);
 
   const onGacha = (price: number) => {
     setPrice(price);
@@ -88,7 +88,7 @@ const page = () => {
     <div>
       <PageTitle language={language} />
       <TypeSelectCheckbox genreList={genreList} setter={changeGenre} />
-      <Limit price={price} onGacha={onGacha} />
+      <Limit onGacha={onGacha} />
       <select name="language-select" value={language} onChange={(e) => setLanguage(e.target.value)}>
         <option value="japanese">日本語</option>
         <option value="english">English</option>
