@@ -110,9 +110,15 @@ const page = () => {
         })}
         {
           filteredItems.length !== 0 &&
-          <p>
-            合計金額: {filteredItems.reduce((sum, item) => sum + item.price, 0)} {getCurrency(language)}
-          </p>
+          <div>
+            <p>
+              合計金額: {filteredItems.reduce((sum, item) => sum + item.price, 0)} {getCurrency(language)}
+            </p>
+            <p>
+              カロリー: {filteredItems.reduce((sum, item) => sum + (item.calorie ? item.calorie : 0), 0)} kcal
+            </p>
+            食塩相当量: {filteredItems.reduce((sum, item) => sum + (item.salt ? item.salt : 0), 0).toFixed(2)} g
+          </div>
         }
       </ul>
       <div style={{ bottom: 0, right: 0, fontSize: '12px' }}>
